@@ -45,8 +45,8 @@ namespace SynCloud.Pages
 
         private void LogButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Username is {0}", "hello");
-            MessageBox.Show("Password is {0}", "bye");
+            var username = UsernameField.Text;
+            var password = PasswordField.Password;
             //if authentication succeed
             Home();
         }
