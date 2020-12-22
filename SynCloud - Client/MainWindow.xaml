@@ -6,5 +6,6 @@
         xmlns:local="clr-namespace:SynCloud"
         mc:Ignorable="d"
         Title="SynCloud" Height="450" Width="350"
+        Closing="OnClose" StateChanged="OnStateChanged" IsVisibleChanged="OnIsVisibleChanged">
     
 </Window>

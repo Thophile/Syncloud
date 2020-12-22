@@ -23,9 +23,64 @@ namespace SynCloud
     /// </summary>
     public partial class MainWindow : Window
     {
+        private System.Windows.Forms.NotifyIcon _icon;
         public MainWindow()
         {
             InitializeComponent();
+
+            // initialise code here
+            _icon = new System.Windows.Forms.NotifyIcon();
+            _icon.BalloonTipText = "Application has been minimised";
+            _icon.BalloonTipTitle = "SynCloud";
+            _icon.Text = "SynCloud";
+            _icon.Icon = new System.Drawing.Icon("SynCloud.ico");
+            _icon.Click += new EventHandler(_icon_Click);
+
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+            {
+                MessageBox.Show("SynCloud is already running");
+                Process.GetCurrentProcess().Kill();
+            }
+
+
+        }
+        void OnClose(object sender, CancelEventArgs args)
+        {
+            _icon.Dispose();
+            _icon = null;
+        }
+
+        private WindowState _windowState = WindowState.Normal;
+        void OnStateChanged(object sender, EventArgs args)
+        {
+            if (WindowState == WindowState.Minimized)
+            {
+                Hide();
+                if (_icon != null)
+                    _icon.ShowBalloonTip(2000);
+            }
+            else
+                _windowState = WindowState;
+        }
+        void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs args)
+        {
+            CheckTrayIcon();
+        }
+
+        void _icon_Click(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = _windowState;
+        }
+        void CheckTrayIcon()
+        {
+            ShowTrayIcon(!IsVisible);
+        }
+
+        void ShowTrayIcon(bool show)
+        {
+            if (_icon != null)
+                _icon.Visible = show;
         }
     }
 }
