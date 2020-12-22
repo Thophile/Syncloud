@@ -7,5 +7,6 @@
     
     <system:String x:Key="username_label">Username</system:String>
     <system:String x:Key="password_label">Password</system:String>
+    <system:String x:Key="login_label">Log in</system:String>
 
 </ResourceDictionary>

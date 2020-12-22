@@ -13,5 +13,10 @@ namespace SynCloud.Pages
         {
             InitializeComponent();
         }
+
+        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

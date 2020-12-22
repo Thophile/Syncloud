@@ -5,10 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SynCloud.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="350"
       Title="Home">
 
     <Grid>
         
+        
+        <Button
+            x:Name="SettingButton"
+            Grid.Row="2"
+            Margin="10 10 10 40"
+            Padding="5"
+            Style="{StaticResource IconButton}"
+            Click="SettingButton_Click">
+            <Path
+                Style="{StaticResource Icon}"
+                Data="{StaticResource settingIcon}"
+                Stretch="Uniform" Width="20" Height="20"/>
+        </Button>
     </Grid>
 </Page>

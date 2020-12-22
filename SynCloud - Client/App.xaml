@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:SynCloud"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ResourceDictionary/Styles.xaml"/>
+                <ResourceDictionary Source="/ResourceDictionary/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
