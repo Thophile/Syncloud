@@ -3,4 +3,9 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="lang">Français</system:String>
+    <system:String x:Key="minimized">L'application a été minimisée</system:String>
+    
+    <system:String x:Key="username_label">Nom d'utilisateur</system:String>
+    <system:String x:Key="password_label">Mot de passe</system:String>
+
 </ResourceDictionary>

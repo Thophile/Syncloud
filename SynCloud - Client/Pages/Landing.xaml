@@ -24,7 +24,7 @@
             Grid.Row="0"
             Margin="10">
             <Label
-                Content="Username"/>
+                Content="{DynamicResource username_label}"/>
             <TextBox
                 x:Name="UsernameField"
                 MinWidth="150"
@@ -36,7 +36,7 @@
             Grid.Row="1"
             Margin="10">
             <Label
-                Content="Password"/>
+                Content="{DynamicResource password_label}"/>
             <PasswordBox
                 x:Name="PasswordField"
                 MinWidth="150"

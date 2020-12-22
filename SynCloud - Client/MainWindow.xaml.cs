@@ -27,23 +27,39 @@ namespace SynCloud
         public MainWindow()
         {
             InitializeComponent();
-
-            // initialise code here
-            _icon = new System.Windows.Forms.NotifyIcon();
-            _icon.BalloonTipText = "Application has been minimised";
-            _icon.BalloonTipTitle = "SynCloud";
-            _icon.Text = "SynCloud";
-            _icon.Icon = new System.Drawing.Icon("SynCloud.ico");
-            _icon.Click += new EventHandler(_icon_Click);
-
             if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
                 MessageBox.Show("SynCloud is already running");
                 Process.GetCurrentProcess().Kill();
             }
-
+            //Set language
+            ResourceDictionary dict = new ResourceDictionary();
+            switch (Controller.Instance.AppSettings.Language)
+            {
+                case Settings.Languages.English:
+                    dict.Source = new Uri("..\\ResourceDictionary\\Translations.en.xaml",
+                                  UriKind.Relative);
+                    break;
+                case Settings.Languages.Français:
+                    dict.Source = new Uri("..\\ResourceDictionary\\Translations.fr.xaml",
+                                       UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dict);
 
             this.Content = new Landing();
+
+            // Minimize to tray parameters
+            _icon = new System.Windows.Forms.NotifyIcon();
+            _icon.BalloonTipText = this.Resources["minimised"] as string;
+            _icon.BalloonTipTitle = "SynCloud";
+            _icon.Text = "SynCloud";
+            _icon.Icon = new System.Drawing.Icon("SynCloud.ico");
+            _icon.Click += new EventHandler(_icon_Click);
+
+            
+
+
         }
         void OnClose(object sender, CancelEventArgs args)
         {
