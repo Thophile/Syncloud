@@ -7,7 +7,9 @@
     <SolidColorBrush x:Key="color_darkabricot">#EFA134</SolidColorBrush>
     <SolidColorBrush x:Key="color_peach">#FFE5B4</SolidColorBrush>
     <SolidColorBrush x:Key="color_softblack">#1C1C1C</SolidColorBrush>
-    <SolidColorBrush x:Key="color_softgrey">#2C2C2C</SolidColorBrush>
+    <SolidColorBrush x:Key="color_grey2">#222222</SolidColorBrush>
+    <SolidColorBrush x:Key="color_grey4">#444444</SolidColorBrush>
+    <SolidColorBrush x:Key="color_greyD">#DDDDDD</SolidColorBrush>
     
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
@@ -20,27 +22,34 @@
     </Style>
     
     
-    <Style x:Key="Icon" TargetType="{x:Type Path}">
-        <Setter Property="Fill" Value="{StaticResource color_softblack}"/>
+    <Style x:Key="Icon_Light" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="{StaticResource color_softwhite}"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
-                <Setter Property="Fill" Value="{StaticResource color_softgrey}"/>
+                <Setter Property="Fill" Value="{StaticResource color_greyD}"/>
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsPressed}" Value="True">
-                <Setter Property="Fill" Value="{StaticResource color_darkabricot}"/>
+            
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Icon_Dark" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="{StaticResource color_grey2}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
+                <Setter Property="Fill" Value="{StaticResource color_grey4}"/>
             </DataTrigger>
+
         </Style.Triggers>
     </Style>
 
 
-    <Style x:Key="BlockButton" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{StaticResource color_softblack}"/>
+    <Style x:Key="BlockButton_Light" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource color_softwhite}"/>
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="Foreground" Value="{StaticResource color_softwhite}"/>
+        <Setter Property="Foreground" Value="{StaticResource color_softblack}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" Padding="5">
+                    <Border Background="{TemplateBinding Background}" Padding="5" BorderThickness="0 3" BorderBrush="{StaticResource color_abricot}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -48,21 +57,44 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{StaticResource color_softgrey}"/>
-                <Setter Property="Foreground" Value="{StaticResource color_softwhite}"/>
+                <Setter Property="Background" Value="{StaticResource color_greyD}"/>
+                <Setter Property="Foreground" Value="{StaticResource color_softblack}"/>
 
             </Trigger>
-            <Trigger Property="IsPressed" Value="true">
-                <Setter Property="Background" Value="{StaticResource color_darkabricot}"/>
-                <Setter Property="Foreground" Value="{StaticResource color_softblack}"/>
-            </Trigger>
+            
             <Trigger Property="IsDefaulted" Value="true">
                 <Setter Property="BorderBrush" Value="Transparent"/>
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    
+
+    <Style x:Key="BlockButton_Dark" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource color_grey2}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Foreground" Value="{StaticResource color_softwhite}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" Padding="5" BorderThickness="0 3" BorderBrush="{StaticResource color_abricot}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{StaticResource color_grey4}"/>
+                <Setter Property="Foreground" Value="{StaticResource color_softwhite}"/>
+
+            </Trigger>
+
+            <Trigger Property="IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
     <Style x:Key="IconButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="Transparent"/>

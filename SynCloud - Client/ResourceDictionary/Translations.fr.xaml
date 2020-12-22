@@ -9,4 +9,6 @@
     <system:String x:Key="password_label">Mot de passe</system:String>
     <system:String x:Key="login_label">Se connecter</system:String>
 
+    <system:String x:Key="folders_label">Mes dossiers</system:String>
+
 </ResourceDictionary>

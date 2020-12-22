@@ -9,19 +9,48 @@
       Title="Home">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto"/>
+            <RowDefinition
+                Height="*"/>
+        </Grid.RowDefinitions>
         
         
-        <Button
-            x:Name="SettingButton"
-            Grid.Row="2"
-            Margin="10 10 10 40"
-            Padding="5"
-            Style="{StaticResource IconButton}"
-            Click="SettingButton_Click">
-            <Path
-                Style="{StaticResource Icon}"
-                Data="{StaticResource settingIcon}"
-                Stretch="Uniform" Width="20" Height="20"/>
-        </Button>
+        <StackPanel
+            Grid.Row="0"
+            Margin="10 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                    Width="*"/>
+                    <ColumnDefinition
+                    Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                Grid.Column="0"
+                Content="{StaticResource folders_label}"
+                FontSize="20"
+                Padding="5"
+                VerticalAlignment="Center"/>
+                <Button
+                Grid.Column="1"
+                x:Name="SettingButton"
+                Grid.Row="2"
+                Padding="10"
+                Style="{StaticResource IconButton}"
+                Click="SettingButton_Click">
+                    <Path
+                    Style="{StaticResource Icon_Dark}"
+                    Data="{StaticResource settingIcon}"
+                    Stretch="Uniform" Width="18" Height="18"/>
+                </Button>
+            </Grid>
+
+            <Separator/>
+        </StackPanel>
+        
+
     </Grid>
 </Page>

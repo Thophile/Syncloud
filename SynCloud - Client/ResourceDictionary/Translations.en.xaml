@@ -9,4 +9,6 @@
     <system:String x:Key="password_label">Password</system:String>
     <system:String x:Key="login_label">Log in</system:String>
 
+    <system:String x:Key="folders_label">My folders</system:String>
+
 </ResourceDictionary>
