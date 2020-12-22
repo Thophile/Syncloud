@@ -33,6 +33,7 @@ namespace SynCloud.Pages
             var username = UsernameField.Text;
             var password = PasswordField.Password;
             //if authentication succeed
+
             Home();
         }
     }

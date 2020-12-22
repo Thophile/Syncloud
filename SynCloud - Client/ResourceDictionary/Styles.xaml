@@ -4,9 +4,10 @@
 
     <SolidColorBrush x:Key="color_softwhite">#FCFCFC</SolidColorBrush>
     <SolidColorBrush x:Key="color_abricot">#FFBD61</SolidColorBrush>
+    <SolidColorBrush x:Key="color_darkabricot">#EFA134</SolidColorBrush>
     <SolidColorBrush x:Key="color_peach">#FFE5B4</SolidColorBrush>
     <SolidColorBrush x:Key="color_softblack">#1C1C1C</SolidColorBrush>
-    <SolidColorBrush x:Key="color_softgrey">#3C3C3C</SolidColorBrush>
+    <SolidColorBrush x:Key="color_softgrey">#2C2C2C</SolidColorBrush>
     
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
@@ -26,8 +27,38 @@
                 <Setter Property="Fill" Value="{StaticResource color_softgrey}"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsPressed}" Value="True">
-                <Setter Property="Fill" Value="{StaticResource color_abricot}"/>
+                <Setter Property="Fill" Value="{StaticResource color_darkabricot}"/>
             </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="BlockButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource color_softblack}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Foreground" Value="{StaticResource color_softwhite}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" Padding="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{StaticResource color_softgrey}"/>
+                <Setter Property="Foreground" Value="{StaticResource color_softwhite}"/>
+
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" Value="{StaticResource color_darkabricot}"/>
+                <Setter Property="Foreground" Value="{StaticResource color_softblack}"/>
+            </Trigger>
+            <Trigger Property="IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
     
