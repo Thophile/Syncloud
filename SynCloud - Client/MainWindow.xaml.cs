@@ -51,7 +51,7 @@ namespace SynCloud
 
             // Minimize to tray parameters
             _icon = new System.Windows.Forms.NotifyIcon();
-            _icon.BalloonTipText = this.Resources["minimised"] as string;
+            _icon.BalloonTipText = this.Resources["minimized"] as string;
             _icon.BalloonTipTitle = "SynCloud";
             _icon.Text = "SynCloud";
             _icon.Icon = new System.Drawing.Icon("SynCloud.ico");
