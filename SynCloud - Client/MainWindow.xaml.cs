@@ -43,6 +43,7 @@ namespace SynCloud
             }
 
 
+            this.Content = new Landing();
         }
         void OnClose(object sender, CancelEventArgs args)
         {
