@@ -21,6 +21,7 @@ namespace SynCloud.Pages
         public Home()
         {
             InitializeComponent();
+            this.InitializeLanguage();
         }
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)

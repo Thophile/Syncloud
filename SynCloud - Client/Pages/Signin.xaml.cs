@@ -21,6 +21,7 @@ namespace SynCloud.Pages
         public Signin()
         {
             InitializeComponent();
+            this.InitializeLanguage();
         }
 
         private void SignButton_Click(object sender, RoutedEventArgs e)
