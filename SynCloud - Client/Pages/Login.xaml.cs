@@ -14,19 +14,23 @@ using System.Windows.Shapes;
 namespace SynCloud.Pages
 {
     /// <summary>
-    /// Logique d'interaction pour Home.xaml
+    /// Logique d'interaction pour Login.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class Login : Page
     {
-        public Home()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        private void LogButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.GetWindow(this).Content = new Home();
         }
 
+        private void SignButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.GetWindow(this).Content = new Signin();
+        }
     }
 }

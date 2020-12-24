@@ -30,7 +30,7 @@
 
                 <Label
                 Grid.Column="0"
-                Content="{StaticResource folders_label}"
+                Content="{DynamicResource folders_label}"
                 FontSize="20"
                 Padding="5"
                 VerticalAlignment="Center"/>
@@ -39,7 +39,7 @@
                 x:Name="SettingButton"
                 Grid.Row="2"
                 Padding="10"
-                Style="{StaticResource IconButton}"
+                Style="{StaticResource EmptyButton}"
                 Click="SettingButton_Click">
                     <Path
                     Style="{StaticResource Icon_Dark}"

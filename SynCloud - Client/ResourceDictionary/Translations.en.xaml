@@ -6,8 +6,13 @@
     <system:String x:Key="minimized">Application has been minimized</system:String>
     
     <system:String x:Key="username_label">Username</system:String>
+    <system:String x:Key="mail_label">Email</system:String>
     <system:String x:Key="password_label">Password</system:String>
+    <system:String x:Key="confirmpassword_label">Confirm password</system:String>
     <system:String x:Key="login_label">Log in</system:String>
+    <system:String x:Key="login_instead_label">Already registered ? Log in</system:String>
+    <system:String x:Key="signin_label">Sign in</system:String>
+    <system:String x:Key="signin_instead_label">Not yet registered ? Sign in</system:String>
 
     <system:String x:Key="folders_label">My folders</system:String>
 

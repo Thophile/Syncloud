@@ -47,7 +47,7 @@ namespace SynCloud
             }
             this.Resources.MergedDictionaries.Add(dict);
 
-            this.Content = new Landing();
+            this.Content = new Login();
 
             // Minimize to tray parameters
             _icon = new System.Windows.Forms.NotifyIcon();

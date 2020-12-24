@@ -14,27 +14,23 @@ using System.Windows.Shapes;
 namespace SynCloud.Pages
 {
     /// <summary>
-    /// Logique d'interaction pour Landing.xaml
+    /// Logique d'interaction pour Signin.xaml
     /// </summary>
-    public partial class Landing : Page
+    public partial class Signin : Page
     {
-        public Landing()
+        public Signin()
         {
             InitializeComponent();
         }
 
-        public void Home()
+        private void SignButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.GetWindow(this).Content = new Home();
+            MainWindow.GetWindow(this).Content = new Login();
         }
 
         private void LogButton_Click(object sender, RoutedEventArgs e)
         {
-            var username = UsernameField.Text;
-            var password = PasswordField.Password;
-            //if authentication succeed
-
-            Home();
+            MainWindow.GetWindow(this).Content = new Login();
         }
     }
 }
