@@ -15,5 +15,8 @@
     <system:String x:Key="signin_instead_label">Not yet registered ? Sign in</system:String>
 
     <system:String x:Key="folders_label">My folders</system:String>
+    
+    
+    <system:String x:Key="setting_label">Settings</system:String>
 
 </ResourceDictionary>

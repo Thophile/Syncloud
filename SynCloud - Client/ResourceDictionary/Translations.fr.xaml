@@ -16,4 +16,7 @@
 
     <system:String x:Key="folders_label">Mes dossiers</system:String>
 
+    
+    <system:String x:Key="setting_label">Paramètres</system:String>
+
 </ResourceDictionary>

@@ -14,19 +14,18 @@ using System.Windows.Shapes;
 namespace SynCloud.Pages
 {
     /// <summary>
-    /// Logique d'interaction pour Home.xaml
+    /// Logique d'interaction pour Settings.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class Settings : Page
     {
-        public Home()
+        public Settings()
         {
             InitializeComponent();
         }
 
-        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.GetWindow(this).Content = new Settings();
+            MainWindow.GetWindow(this).Content = new Home();
         }
-
     }
 }
