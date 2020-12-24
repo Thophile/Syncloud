@@ -45,5 +45,16 @@ namespace SynCloud
                 }
             }
         }
+
+        public void UpdateSettings()
+        {
+
+            //Update jobs list in file
+            string settingsJSON = JsonConvert.SerializeObject(AppSettings, Formatting.Indented);
+
+            //Writing to path the json data
+            File.WriteAllText(this._settingsFile, settingsJSON);
+
+        }
     }
 }
