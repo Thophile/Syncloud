@@ -18,14 +18,14 @@ namespace Syncloud.Pages
     /// </summary>
     public partial class Settings : Page
     {
-        Syncloud.Settings settings;
+        Model.Settings settings;
         public Settings()
         {
             InitializeComponent();
             this.InitializeLanguage();
 
             settings = Controller.Instance.AppSettings;
-            LanguageField.ItemsSource = Enum.GetValues(typeof(Syncloud.Settings.Languages));
+            LanguageField.ItemsSource = Enum.GetValues(typeof(Model.Settings.Languages));
 
             LanguageField.SelectedItem = settings.Language;
         }
@@ -33,9 +33,9 @@ namespace Syncloud.Pages
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             //Save settings
-            Syncloud.Settings settings = Controller.Instance.AppSettings;
+            Model.Settings settings = Controller.Instance.AppSettings;
 
-            settings.Language = (Syncloud.Settings.Languages)LanguageField.SelectedItem;
+            settings.Language = (Model.Settings.Languages)LanguageField.SelectedItem;
 
             Controller.Instance.AppSettings = settings;
             Controller.Instance.UpdateSettings();
