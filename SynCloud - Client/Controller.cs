@@ -13,8 +13,12 @@ namespace Syncloud
             string appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Syncloud");
             Directory.CreateDirectory(appData);
 
-            /* ==== Settings initialisation ==== */
+            /* ==== SyncFolders Initialisation ====*/
+            _syncFoldersFile = Path.Combine(appData, "syncFolders.json");
+            SyncFolders = File.Exists(_syncFoldersFile) ? JsonConvert.DeserializeObject<ObservableCollection<SyncFolder>>(File.ReadAllText(_syncFoldersFile)) : new ObservableCollection<SyncFolder>();
+            
 
+            /* ==== Settings Initialisation ==== */
             _settingsFile = Path.Combine(appData, "settings.json");
 
             if (File.Exists(_settingsFile))
