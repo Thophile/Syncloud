@@ -20,4 +20,9 @@
     <system:String x:Key="setting_label">Settings</system:String>
     <system:String x:Key="language_label">Language</system:String>
 
+    <system:String x:Key="edit_label">Edit location</system:String>
+    <system:String x:Key="name_label">Name</system:String>
+    <system:String x:Key="path_label">Path</system:String>
+    <system:String x:Key="browse">Browse</system:String>
+    
 </ResourceDictionary>

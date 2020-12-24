@@ -19,5 +19,10 @@
     
     <system:String x:Key="setting_label">Paramètres</system:String>
     <system:String x:Key="language_label">Language</system:String>
+    
+    <system:String x:Key="edit_label">Modifier un emplacement</system:String>
+    <system:String x:Key="name_label">Nom</system:String>
+    <system:String x:Key="path_label">Chemin</system:String>
+    <system:String x:Key="browse">Parcourir</system:String>
 
 </ResourceDictionary>
