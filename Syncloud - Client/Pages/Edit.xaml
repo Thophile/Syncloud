@@ -8,7 +8,96 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Edit">
 
-    <Grid>
-        
+    <Grid
+        Margin="10 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition
+                Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto"/>
+            <RowDefinition
+                Height="auto"/>
+            <RowDefinition
+                Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                    Width="*"/>
+                    <ColumnDefinition
+                    Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                Grid.Column="0"
+                Content="{DynamicResource setting_label}"
+                FontSize="20"
+                Padding="5"
+                VerticalAlignment="Center"/>
+                <Button
+                Grid.Column="1"
+                x:Name="HomeButton"
+                Grid.Row="2"
+                Padding="10"
+                Style="{StaticResource EmptyButton}"
+                Click="HomeButton_Click">
+                    <Path
+                    Style="{StaticResource Icon_Dark}"
+                    Data="{StaticResource homeIcon}"
+                    Stretch="Uniform" Width="18" Height="18"/>
+                </Button>
+            </Grid>
+
+            <Separator/>
+        </StackPanel>
+
+        <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="5"
+                    Padding="5"
+                    VerticalAlignment="Center"
+                    Content="{DynamicResource name_label}"/>
+        <TextBox 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="5"
+                    Padding="5"
+                    x:Name="NameField"/>
+
+
+        <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="5"
+                    Padding="5"
+                    VerticalAlignment="Center"
+                    Content="{DynamicResource path_label}"/>
+        <TextBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="5"
+                    Padding="5"
+                    VerticalAlignment="Center"
+                    x:Name="PathField"/>
+        <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Margin="5"
+                    Padding="5"
+                    Content="{DynamicResource browse}"
+                    x:Name="PathBrowse"
+                    Click="PathBrowse_Click"/>
+
     </Grid>
 </Page>
