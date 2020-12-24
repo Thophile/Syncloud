@@ -36,17 +36,22 @@ namespace SynCloud
             this.Content = new Login();
 
             // Minimize to tray parameters
+            
             _icon = new System.Windows.Forms.NotifyIcon();
-            _icon.BalloonTipText = this.Resources["minimized"] as string;
+            SetNotifyText();
             _icon.BalloonTipTitle = "SynCloud";
             _icon.Text = "SynCloud";
             _icon.Icon = new System.Drawing.Icon("SynCloud.ico");
             _icon.Click += new EventHandler(_icon_Click);
 
-            
-
 
         }
+        public void SetNotifyText()
+        {
+            // Notification text
+            _icon.BalloonTipText = (this.Content as Page).Resources["minimized"] as string;
+        }
+
         void OnClose(object sender, CancelEventArgs args)
         {
             _icon.Dispose();
@@ -60,7 +65,11 @@ namespace SynCloud
             {
                 Hide();
                 if (_icon != null)
+                {
+                    SetNotifyText();
                     _icon.ShowBalloonTip(2000);
+                }
+                    
             }
             else
                 _windowState = WindowState;
