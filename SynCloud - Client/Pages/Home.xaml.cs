@@ -39,6 +39,7 @@ namespace Syncloud.Pages
         {
             var button = sender as Button;
             Controller.Instance.SyncFolders.Remove(button.Tag as SyncFolder);
+            Controller.Instance.UpdateSyncFolders();
         }
 
         private void FetchButton_Click(object sender, RoutedEventArgs e)
