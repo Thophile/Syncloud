@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using Syncloud.Model;
+using System.Collections.ObjectModel;
 
 namespace Syncloud
 {
@@ -30,6 +32,7 @@ namespace Syncloud
         private static readonly object _lock = new object();
 
         /* == Properties = */
+        public ObservableCollection<SyncFolder> SyncFolders { get; set; }
         public Settings AppSettings { get; set; }
         public static Controller Instance
         {
