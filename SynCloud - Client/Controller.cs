@@ -55,8 +55,17 @@ namespace Syncloud
             string settingsJSON = JsonConvert.SerializeObject(AppSettings, Formatting.Indented);
 
             //Writing to path the json data
-            File.WriteAllText(this._settingsFile, settingsJSON);
+            File.WriteAllText(_settingsFile, settingsJSON);
 
+        }
+
+        public void UpdateSyncFolders()
+        {
+            //Update jobs list in file
+            string syncFoldersJSON = JsonConvert.SerializeObject(SyncFolders, Formatting.Indented);
+
+            //Writing to path the json data
+            File.WriteAllText(_syncFoldersFile, syncFoldersJSON);
         }
     }
 }
