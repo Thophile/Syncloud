@@ -20,18 +20,12 @@ namespace Syncloud
 
             /* ==== Settings Initialisation ==== */
             _settingsFile = Path.Combine(appData, "settings.json");
-
-            if (File.Exists(_settingsFile))
-            {
-                AppSettings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(_settingsFile));
-            }
-            else
-            {
-                AppSettings = new Settings(Settings.Languages.English);
-            }
+            AppSettings = File.Exists(_settingsFile) ? JsonConvert.DeserializeObject<Settings>(File.ReadAllText(_settingsFile)) : new Settings(Settings.Languages.English);
+            
         }
         /* == Private members == */
         private string _settingsFile;
+        private string _syncFoldersFile;
         private static Controller _instance = null;
         private static readonly object _lock = new object();
 
