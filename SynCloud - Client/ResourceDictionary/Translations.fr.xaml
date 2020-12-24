@@ -18,5 +18,6 @@
 
     
     <system:String x:Key="setting_label">Paramètres</system:String>
+    <system:String x:Key="language_label">Language</system:String>
 
 </ResourceDictionary>
