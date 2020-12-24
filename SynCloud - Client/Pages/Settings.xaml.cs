@@ -11,21 +11,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SynCloud.Pages
+namespace Syncloud.Pages
 {
     /// <summary>
     /// Logique d'interaction pour Settings.xaml
     /// </summary>
     public partial class Settings : Page
     {
-        SynCloud.Settings settings;
+        Syncloud.Settings settings;
         public Settings()
         {
             InitializeComponent();
             this.InitializeLanguage();
 
             settings = Controller.Instance.AppSettings;
-            LanguageField.ItemsSource = Enum.GetValues(typeof(SynCloud.Settings.Languages));
+            LanguageField.ItemsSource = Enum.GetValues(typeof(Syncloud.Settings.Languages));
 
             LanguageField.SelectedItem = settings.Language;
         }
@@ -33,9 +33,9 @@ namespace SynCloud.Pages
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             //Save settings
-            SynCloud.Settings settings = Controller.Instance.AppSettings;
+            Syncloud.Settings settings = Controller.Instance.AppSettings;
 
-            settings.Language = (SynCloud.Settings.Languages)LanguageField.SelectedItem;
+            settings.Language = (Syncloud.Settings.Languages)LanguageField.SelectedItem;
 
             Controller.Instance.AppSettings = settings;
             Controller.Instance.UpdateSettings();

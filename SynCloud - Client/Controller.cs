@@ -2,13 +2,13 @@
 using System;
 using System.IO;
 
-namespace SynCloud
+namespace Syncloud
 {
     class Controller
     {
         private Controller() {
             //Appdata folder path
-            string appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SynCloud");
+            string appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Syncloud");
             Directory.CreateDirectory(appData);
 
             /* ==== Settings initialisation ==== */

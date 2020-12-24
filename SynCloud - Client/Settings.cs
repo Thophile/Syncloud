@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SynCloud
+namespace Syncloud
 {
     public struct Settings
     {

@@ -1,11 +1,11 @@
-﻿<Window x:Class="SynCloud.MainWindow"
+﻿<Window x:Class="Syncloud.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SynCloud"
+        xmlns:local="clr-namespace:Syncloud"
         mc:Ignorable="d"
-        Title="SynCloud" Height="450" Width="350"
+        Title="Syncloud" Height="450" Width="350"
         Closing="OnClose" StateChanged="OnStateChanged" IsVisibleChanged="OnIsVisibleChanged">
 
 </Window>

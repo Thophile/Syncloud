@@ -3,13 +3,13 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>SynCloud</RootNamespace>
+    <RootNamespace>Syncloud</RootNamespace>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>SynCloud.ico</ApplicationIcon>
+    <ApplicationIcon>Syncloud.ico</ApplicationIcon>
     <Authors>Thophile</Authors>
-    <Company>SynCloud</Company>
-    <Product>SynCloud</Product>
+    <Company>Syncloud</Company>
+    <Product>Syncloud</Product>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SynCloud.ico">
+    <None Update="Syncloud.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

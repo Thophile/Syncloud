@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SynCloud
+namespace Syncloud
 {
     public static class Extensions
     {
@@ -14,11 +14,11 @@ namespace SynCloud
             ResourceDictionary dict = new ResourceDictionary();
             switch (Controller.Instance.AppSettings.Language)
             {
-                case SynCloud.Settings.Languages.English:
+                case Syncloud.Settings.Languages.English:
                     dict.Source = new Uri("..\\ResourceDictionary\\Translations.en.xaml",
                                   UriKind.Relative);
                     break;
-                case SynCloud.Settings.Languages.Français:
+                case Syncloud.Settings.Languages.Français:
                     dict.Source = new Uri("..\\ResourceDictionary\\Translations.fr.xaml",
                                        UriKind.Relative);
                     break;

@@ -1,4 +1,4 @@
-﻿using SynCloud.Pages;
+﻿using Syncloud.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SynCloud
+namespace Syncloud
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,7 +29,7 @@ namespace SynCloud
             InitializeComponent();
             if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
-                MessageBox.Show("SynCloud is already running");
+                MessageBox.Show("Syncloud is already running");
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -39,9 +39,9 @@ namespace SynCloud
             
             _icon = new System.Windows.Forms.NotifyIcon();
             SetNotifyText();
-            _icon.BalloonTipTitle = "SynCloud";
-            _icon.Text = "SynCloud";
-            _icon.Icon = new System.Drawing.Icon("SynCloud.ico");
+            _icon.BalloonTipTitle = "Syncloud";
+            _icon.Text = "Syncloud";
+            _icon.Icon = new System.Drawing.Icon("Syncloud.ico");
             _icon.Click += new EventHandler(_icon_Click);
 
 
