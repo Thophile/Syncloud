@@ -121,6 +121,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
+                                VerticalAlignment="Center"
                                 Grid.Row="0"
                                 Text="{Binding Name}"/>
                         </DataTemplate>
@@ -137,7 +138,7 @@
                                 Click="EditButton_Click">
                                 <Path
                                     Data="{StaticResource settingIcon}"
-                                    Stretch="Uniform" Fill="Black" Width="20" Height="20"/>
+                                    Stretch="Uniform" Fill="Black" Width="15" Height="15"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -152,7 +153,7 @@
                                 Click="DeleteButton_Click">
                                 <Path
                                     Data="{StaticResource deleteIcon}"
-                                    Stretch="Uniform" Fill="Black" Width="20" Height="20"/>
+                                    Stretch="Uniform" Fill="Black" Width="15" Height="15"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
