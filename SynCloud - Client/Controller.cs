@@ -9,7 +9,7 @@ namespace Syncloud
     class Controller
     {
         private Controller() {
-            //Appdata folder path
+            /* ==== Appdata Path Declaration ==== */
             string appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Syncloud");
             Directory.CreateDirectory(appData);
 
@@ -23,6 +23,7 @@ namespace Syncloud
             AppSettings = File.Exists(_settingsFile) ? JsonConvert.DeserializeObject<Settings>(File.ReadAllText(_settingsFile)) : new Settings(Settings.Languages.English);
             
         }
+
         /* == Private members == */
         private string _settingsFile;
         private string _syncFoldersFile;
