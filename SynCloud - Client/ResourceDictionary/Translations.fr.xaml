@@ -14,7 +14,7 @@
     <system:String x:Key="signin_label">S'inscrire</system:String>
     <system:String x:Key="signin_instead_label">Pas encore inscrit ? S'inscrire</system:String>
 
-    <system:String x:Key="folders_label">Mes dossiers</system:String>
+    <system:String x:Key="folders_label">Mes emplacements</system:String>
 
     
     <system:String x:Key="setting_label">Paramètres</system:String>
