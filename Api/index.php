@@ -1,3 +1,4 @@
+<?php
 //Include classes
 include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Database.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Request.php';
@@ -48,3 +49,4 @@ $router->post('/login', function($request, $db) {
 
 
 
+?>
