@@ -20,10 +20,12 @@ $router->get('/', function() {
 });
 
 $router->post('/register', function($request, $db) {
+  $content = json_decode(file_get_contents("php://input"),true);
+
   $db->registerUser(
-    $request->getBody()['username'],
-    $request->getBody()['mail'],
-    password_hash($request->getBody()['password'], PASSWORD_DEFAULT));
+    $content['username'],
+    $content['mail'],
+    password_hash($content['password'], PASSWORD_DEFAULT));
 
 });
 
@@ -31,11 +33,12 @@ $router->post('/register', function($request, $db) {
 
 //Prevent acces from file name
 $router->post('/login', function($request, $db) {
-  $body = $request->getBody();
+  //getting query content
+  $content = json_decode(file_get_contents("php://input"),true);
 
   $user = $db->connectUser(
-    $body['uid'],
-    $body['password']
+    $content['uid'],
+    $content['password']
   );
   if($user != null)
   {
