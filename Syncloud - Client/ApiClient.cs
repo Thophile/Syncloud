@@ -30,7 +30,7 @@ namespace Syncloud
             HttpResponseMessage message = await PostAsync("login", data);
            
             Token = await message.Content.ReadAsStringAsync();
-            message.IsSuccessStatusCode;
+            return message.IsSuccessStatusCode;
         }
 
         public async Task<bool> Register(string username, string mail, string password)
