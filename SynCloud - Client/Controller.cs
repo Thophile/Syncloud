@@ -21,7 +21,9 @@ namespace Syncloud
             /* ==== Settings Initialisation ==== */
             _settingsFile = Path.Combine(appData, "settings.json");
             AppSettings = File.Exists(_settingsFile) ? JsonConvert.DeserializeObject<Settings>(File.ReadAllText(_settingsFile)) : new Settings(Settings.Languages.English);
-            
+
+            /* ==== ApiClient Initialisation ==== */
+            ApiClient = new ApiClient("http://localhost:8000/");
         }
 
         /* == Private members == */
@@ -31,6 +33,7 @@ namespace Syncloud
         private static readonly object _lock = new object();
 
         /* == Properties = */
+        public ApiClient ApiClient { get; set; }
         public ObservableCollection<SyncFolder> SyncFolders { get; set; }
         public Settings AppSettings { get; set; }
         public static Controller Instance
