@@ -24,9 +24,13 @@ namespace Syncloud.Pages
             this.InitializeLanguage();
         }
 
-        private void LogButton_Click(object sender, RoutedEventArgs e)
+        private async void LogButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.GetWindow(this).Content = new Home();
+            if(await Controller.Instance.ApiClient.Login(UsernameField.Text, PasswordField.Password))
+            {
+                MainWindow.GetWindow(this).Content = new Home();
+
+            }
         }
 
         private void SignButton_Click(object sender, RoutedEventArgs e)
