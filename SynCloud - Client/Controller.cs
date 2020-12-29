@@ -27,8 +27,8 @@ namespace Syncloud
         }
 
         /* == Private members == */
-        private string _settingsFile;
-        private string _syncFoldersFile;
+        private readonly string _settingsFile;
+        private readonly string _syncFoldersFile;
         private static Controller _instance = null;
         private static readonly object _lock = new object();
 

@@ -45,11 +45,8 @@ namespace Syncloud
 
             var data = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage message = await PostAsync("register", data);
-            var response = await message.Content.ReadAsStringAsync();
             return message.IsSuccessStatusCode;
 
-
         }
-
     }
 }
