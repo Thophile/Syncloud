@@ -31,9 +31,6 @@ $router->post('/register', function($request, $db) {
 
 });
 
-
-
-//Prevent acces from file name
 $router->post('/login', function($request, $db) {
   //getting query content
   $content = json_decode(file_get_contents("php://input"),true);
@@ -52,6 +49,54 @@ $router->post('/login', function($request, $db) {
   die();
 });
 
+$router->get('/list', function($request){
+  $token = apache_request_headers()['Authorization'];
+  
+  if(isset($token)){
+    
+    if ($username = Token::validate($token)){
+      $listFile = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username.'\\list.json';
 
+      if (file_exists($listFile)){
+        $list = file_get_contents($listFile);
+      }else{
+        $list = "";
+        file_force_contents($listFile);
+      }
+
+    }
+  }
+  echo $list;
+});
+
+$router->post('/list',function($request){
+  $content = json_decode(file_get_contents("php://input"),true);
+  $token = apache_request_headers()['Authorization'];
+
+  if(isset($token)){
+
+    if ($username = Token::validate($token)){
+
+      $listFile = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username.'\\list.json';
+
+      //content is an array of name
+      $remote = json_decode($content['list']);
+      if(file_exists($listFile)){
+        //add remote value that does not aready existe to locale list
+        $locale = json_decode(file_get_contents($listFile));
+        foreach ($remote as $value) {
+          if(!in_array($value, $locale)){
+            $locale[] = $value;
+          }
+        }
+      }else{
+        //locale is empty
+        $locale = $remote;
+      }
+      file_force_contents($listFile, json_encode($locale));
+
+    }
+  }
+})
 
 ?>
