@@ -73,8 +73,8 @@ class Database{
             http_response_code(400);
             die();
         }
-
-        return password_verify($password,$user["password"]);
+        
+        return password_verify($password,$user["password"]) ? $user : null;
 
         
     }
