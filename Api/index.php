@@ -4,6 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Database.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Request.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Router.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Token.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/objects/Extensions.php';
 
 
 //Include Environnement file
@@ -12,6 +13,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/env.php';
 //Instanciate objects
 $db = new Database();
 $router = new Router(new Request, $db);
+Extensions::init();
 
 //Prevent acces from file name
 $router->get('/', function() {
