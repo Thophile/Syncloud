@@ -33,7 +33,15 @@ namespace Syncloud
                 Process.GetCurrentProcess().Kill();
             }
 
-            this.Content = new Login();
+            // Attempt Token relogging
+            if(Controller.Instance.AppSettings.Token != "")
+            {
+                this.Content = new Home();
+            }
+            else
+            {
+                this.Content = new Login();
+            }
 
             // Minimize to tray parameters
             

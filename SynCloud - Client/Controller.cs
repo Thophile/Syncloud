@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using Syncloud.Model;
 using System.Collections.ObjectModel;
+using System.Windows;
+using Syncloud.Pages;
 
 namespace Syncloud
 {
@@ -20,7 +22,7 @@ namespace Syncloud
 
             /* ==== Settings Initialisation ==== */
             _settingsFile = Path.Combine(appData, "settings.json");
-            AppSettings = File.Exists(_settingsFile) ? JsonConvert.DeserializeObject<Settings>(File.ReadAllText(_settingsFile)) : new Settings(Settings.Languages.English);
+            AppSettings = File.Exists(_settingsFile) ? JsonConvert.DeserializeObject<Model.Settings>(File.ReadAllText(_settingsFile)) : new Model.Settings(Model.Settings.Languages.English);
 
             /* ==== ApiClient Initialisation ==== */
             ApiClient = new ApiClient("http://localhost:8000/");
@@ -35,7 +37,7 @@ namespace Syncloud
         /* == Properties = */
         public ApiClient ApiClient { get; set; }
         public ObservableCollection<SyncFolder> SyncFolders { get; set; }
-        public Settings AppSettings { get; set; }
+        public Model.Settings AppSettings { get; set; }
         public static Controller Instance
         {
             get
@@ -69,6 +71,19 @@ namespace Syncloud
 
             //Writing to path the json data
             File.WriteAllText(_syncFoldersFile, syncFoldersJSON);
+        }
+
+        public void UpdateToken(string token)
+        {
+            if (token == "")
+            {
+                Application.Current.MainWindow.Content = new Login();
+            }
+            var s = AppSettings;
+            s.Token = token;
+            AppSettings = s;
+            UpdateSettings();
+            
         }
     }
 }

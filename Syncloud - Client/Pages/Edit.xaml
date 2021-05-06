@@ -23,6 +23,8 @@
                 Height="auto"/>
             <RowDefinition
                 Height="auto"/>
+            <RowDefinition
+                Height="auto"/>
         </Grid.RowDefinitions>
 
 
@@ -59,16 +61,24 @@
 
             <Separator/>
         </StackPanel>
-
         <Label
-                    Grid.Row="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Margin="5"
+            Padding="5"
+            VerticalAlignment="Center"
+            Foreground="Red"
+            Content=""
+            x:Name="ErrorField"/>
+        <Label
+                    Grid.Row="2"
                     Grid.Column="0"
                     Margin="5"
                     Padding="5"
                     VerticalAlignment="Center"
                     Content="{DynamicResource name_label}"/>
         <TextBox 
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Margin="5"
@@ -77,21 +87,21 @@
 
 
         <Label
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="0"
                     Margin="5"
                     Padding="5"
                     VerticalAlignment="Center"
                     Content="{DynamicResource path_label}"/>
         <TextBox
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="1"
                     Margin="5"
                     Padding="5"
                     VerticalAlignment="Center"
                     x:Name="PathField"/>
         <Button
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="2"
                     Margin="5"
                     Padding="5"

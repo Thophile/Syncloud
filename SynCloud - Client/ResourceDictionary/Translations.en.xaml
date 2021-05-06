@@ -15,12 +15,17 @@
     <system:String x:Key="signin_instead_label">Not yet registered ? Sign in</system:String>
 
     <system:String x:Key="folders_label">My Locations</system:String>
-    
-    
+    <system:String x:Key="path_empty_error">Error : Path is empty</system:String>
+    <system:String x:Key="warning">Warning !</system:String>
+    <system:String x:Key="request_failed">Request to server has failed</system:String>
+    <system:String x:Key="delete_warning">You are about to delete that folder from your list. This action will remove this folder from server. Would you like to continue ?</system:String>
+
+
     <system:String x:Key="setting_label">Settings</system:String>
     <system:String x:Key="language_label">Language</system:String>
 
     <system:String x:Key="edit_label">Edit location</system:String>
+    <system:String x:Key="error_label">Invalid Name field, may already be used</system:String>
     <system:String x:Key="name_label">Name</system:String>
     <system:String x:Key="path_label">Path</system:String>
     <system:String x:Key="browse">Browse</system:String>

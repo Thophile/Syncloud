@@ -7,8 +7,9 @@ namespace Syncloud.Model
 {
     public class SyncFolder
     {
-        public SyncFolder()
+        public SyncFolder(string name = "")
         {
+            this.Name = name;
             this.Status = Status.New;
         }
         public string Name { get; set; }

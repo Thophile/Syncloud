@@ -32,10 +32,25 @@ namespace Syncloud.Pages
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            _syncFolder.Name = NameField.Text;
-            _syncFolder.Path = PathField.Text;
-            Controller.Instance.UpdateSyncFolders();
-            MainWindow.GetWindow(this).Content = new Home();
+            // Searching for duplicates
+            bool hasValidName = true;
+            foreach(SyncFolder file in Controller.Instance.SyncFolders)
+            {
+                if(file.Name == NameField.Text && !Object.ReferenceEquals(file, this._syncFolder))
+                {
+                    hasValidName = false;
+                    ErrorField.Content = this.Resources["error_label"];
+                }
+
+            }
+
+            if (hasValidName)
+            {
+                _syncFolder.Name = NameField.Text;
+                _syncFolder.Path = PathField.Text;
+                Controller.Instance.UpdateSyncFolders();
+                MainWindow.GetWindow(this).Content = new Home();
+            }
         }
 
         private void PathBrowse_Click(object sender, RoutedEventArgs e)

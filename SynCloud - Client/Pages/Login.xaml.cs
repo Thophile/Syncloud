@@ -28,8 +28,8 @@ namespace Syncloud.Pages
         {
             if(await Controller.Instance.ApiClient.Login(UsernameField.Text, PasswordField.Password))
             {
-                MainWindow.GetWindow(this).Content = new Home();
-
+                    Window w = MainWindow.GetWindow(this);
+                    if (w != null) w.Content = new Home();
             }
         }
 
