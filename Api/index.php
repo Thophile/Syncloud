@@ -50,53 +50,141 @@ $router->post('/login', function($request, $db) {
 });
 
 $router->get('/list', function($request){
-  $token = apache_request_headers()['Authorization'];
+	$token = explode(" ",apache_request_headers()['Authorization'])[1];
   
-  if(isset($token)){
-    
-    if ($username = Token::validate($token)){
-      $listFile = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username.'\\list.json';
+  if (isset($token) && $username = Token::validate($token)){
+    $path = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username;
+	$ar = scandir($path,1);
+    $list = json_encode(array_chunk($ar,count($ar)-2)[0]);
 
-      if (file_exists($listFile)){
-        $list = file_get_contents($listFile);
-      }else{
-        $list = "";
-        file_force_contents($listFile);
-      }
-
-    }
+    echo $list;
+    return;
   }
-  echo $list;
+  
+  http_response_code(403);
 });
 
-$router->post('/list',function($request){
-  $content = json_decode(file_get_contents("php://input"),true);
-  $token = apache_request_headers()['Authorization'];
+$router->get('/folder', function($request){
+  $token = explode(" ",apache_request_headers()['Authorization'])[1];
+  $foldername = $_GET["name"];
+  
+  if (isset($token) && $username = Token::validate($token)){
+    $folder = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username.'\\'.$foldername;
+    
+    if (is_dir($folder)){
+      // Get real path for our folder
+      $rootPath = $folder;
+	  $zipname = $foldername.".zip";
 
-  if(isset($token)){
+      // Initialize archive object
+      $zip = new ZipArchive();
+      $zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-    if ($username = Token::validate($token)){
+      // Create recursive directory iterator
+      /** @var SplFileInfo[] $files */
+      $files = new RecursiveIteratorIterator(
+          new RecursiveDirectoryIterator($rootPath),
+          RecursiveIteratorIterator::LEAVES_ONLY
+      );
 
-      $listFile = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username.'\\list.json';
+      foreach ($files as $name => $file)
+      {
+          // Skip directories (they would be added automatically)
+          if (!$file->isDir())
+          {
+              // Get real and relative path for current file
+              $filePath = $file->getRealPath();
+              $relativePath = substr($filePath, strlen($rootPath) + 1);
 
-      //content is an array of name
-      $remote = json_decode($content['list']);
-      if(file_exists($listFile)){
-        //add remote value that does not aready existe to locale list
-        $locale = json_decode(file_get_contents($listFile));
-        foreach ($remote as $value) {
-          if(!in_array($value, $locale)){
-            $locale[] = $value;
+              // Add current file to archive
+              $zip->addFile($filePath, $relativePath);
           }
-        }
-      }else{
-        //locale is empty
-        $locale = $remote;
       }
-      file_force_contents($listFile, json_encode($locale));
 
-    }
+      // Zip archive will be created only after closing object
+      $zip->close();
+      header('Content-Type: '.filetype($zipname));
+      header('Content-disposition: attachment; filename='.$zipname);
+      header('Content-Length: ' . filesize($zipname));
+      readfile($zipname); 
+	  unlink($zipname);
+    }else{
+		http_response_code(500);
+	}
+
+    return;
   }
-})
+  
+  http_response_code(403);
+});
 
+$router->post('/folder', function($request){
+
+  $token = explode(" ",apache_request_headers()['Authorization'])[1];
+  if (isset($token) && $username = Token::validate($token)){    
+    
+    //Handle files if submitted
+    if (isset($_FILES['file'])) {
+
+      $filename = $_FILES['file']['name'];
+
+      $path = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username;
+      if (!file_exists($path)) {
+        mkdir($path, 0777, true);
+      }
+
+      $tmpFilePath = $_FILES['file']['tmp_name'];
+      echo("TMP Path of files : ".$tmpFilePath."\n");
+
+      if ($tmpFilePath != ""){
+        //Upload the file from the tmp dir
+        if(move_uploaded_file($tmpFilePath, $path."\\".$filename)){
+			//unzip
+			$zip = new ZipArchive;
+	
+			if ($zip->open($path."\\".$filename) === TRUE) {
+				
+				$zip->extractTo($path."\\".str_replace(".zip","",$filename));
+				$zip->close();
+				unlink($path."\\".$filename);
+			}
+        }
+
+      }
+    }else{
+		echo("File too large");
+	}
+    return;
+  }else{
+    http_response_code(403);
+  }
+
+  
+});
+
+$router->post('/delete_folder', function($request){
+	$content = json_decode(file_get_contents("php://input"),true);
+	$token = explode(" ",apache_request_headers()['Authorization'])[1];
+
+	if (isset($token) && $username = Token::validate($token)){  
+		$folder = $_SERVER['DOCUMENT_ROOT'].'\\usersData\\'.$username.'\\'.$content['name'];
+		
+		function rmrdir($dirPath){
+			if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+				$dirPath .= '/';
+			}
+			$files = glob($dirPath . '*', GLOB_MARK);
+			foreach ($files as $file) {
+				if (is_dir($file)) {
+					rmrdir($file);
+				} else {
+					unlink($file);
+				}
+			}
+			rmdir($dirPath);
+		}
+		rmrdir($folder);
+
+	}
+});
 ?>
